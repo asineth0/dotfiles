@@ -1,0 +1,97 @@
+[colors]
+background = #16161e
+background-alt = #16161e
+foreground = #acb0d0
+foreground-alt = #acb0d0
+primary = #acb0d0
+secondary = #acb0d0
+alert = #acb0d0
+
+[bar/top]
+width = 100%
+height = 24
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+padding-left = 0
+padding-right = 2
+font-0 = "JetBrainsMono Nerd Font:pixelsize=11;3"
+modules-left = bspwm
+modules-center = date
+modules-right = mpd battery wifi ethernet volume
+module-margin-left = 2
+module-margin-right = 0
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state> <label-mode>
+pin-workspaces = true
+enable-scroll = true
+label-empty = 
+label-focused = %index%
+label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.foreground}
+label-focused-padding = 1
+label-occupied = %index%
+label-occupied-padding = 1
+
+[module/date]
+type = internal/date
+interval = 5
+date = %I:%M %p - %a %Y.%m.%d
+label = %date%
+
+[module/mpd]
+type = internal/mpd
+interval = 1
+host = /tmp/mpd.sock
+format-online =   <label-song>
+label-song = %artist% - %title%
+
+[module/battery]
+type = internal/battery
+full-at = 95
+battery = BAT0
+adapter = AC
+poll-interval = 5
+format-charging = <animation-charging>  <label-charging>% (charging)
+format-discharging = <ramp-capacity>  <label-discharging>%
+format-full = <ramp-capacity>  <label-full>%
+label-charging = %percentage%
+label-discharging = %percentage%
+label-full = %percentage%
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
+[module/wifi]
+type = internal/network
+interface = wlan0
+format-connected = %{A1:kitty -e iwctl:} <label-connected>%{A}
+format-disconnected = %{A1:kitty -e iwctl:} <label-disconnected>%{A}
+label-connected = %local_ip%
+label-disconnected = n/a
+
+[module/ethernet]
+type = internal/network
+interface = eth0
+format-connected =   <label-connected>
+label-connected = %local_ip%
+
+[module/volume]
+type = internal/pulseaudio
+use-ui-max = true
+format-volume = <ramp-volume>  <label-volume>%
+label-volume = %percentage%
+label-muted =   muted
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 

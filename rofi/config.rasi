@@ -1,0 +1,38 @@
+configuration {
+  modi: "drun";
+  show-icons: true;
+  click-to-exit: true;
+  hide-scrollbar: true;
+}
+
+* {
+  text-color: #c4c8c5;
+  background-color: #1d1f21;
+  font: "JetBrainsMono Nerd Font 11";
+}
+
+window {
+  width: 45%;
+  padding: 30px;
+}
+
+listview {
+  lines: 12;
+}
+
+prompt {
+  enabled: false;
+}
+
+inputbar {
+  padding: 4px;
+}
+
+element {
+  padding: 4px;
+}
+
+element selected {
+    text-color: #1d1f21;
+    background-color: #c4c8c5;
+}
